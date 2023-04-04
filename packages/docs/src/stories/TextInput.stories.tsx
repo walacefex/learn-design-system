@@ -1,23 +1,33 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Box, Text, Checkbox, CheckboxProps } from '@ignite-ui/react'
+import type { StoryObj, Meta } from '@storybook/react'
+import { Box, TextInput, TextInputProps, Text } from '@ignite-ui/react'
 
 export default {
-  title: 'Form/Checkbox',
-  component: Checkbox,
+  title: 'Form/TextInput',
+  component: TextInput,
   args: {},
   decorators: [
     (Story) => {
       return (
         <Box
           as="label"
-          css={{ display: 'flex', flexDirection: 'row', gap: '$2' }}
+          css={{ display: 'flex', flexDirection: 'column', gap: '$2' }}
         >
+          <Text size="sm">Email address</Text>
           {Story()}
-          <Text size="sm">Accept terms of use</Text>
         </Box>
       )
     },
   ],
-} as Meta<CheckboxProps>
+} as Meta<TextInputProps>
 
-export const Primary: StoryObj<CheckboxProps> = {}
+export const Primary: StoryObj<TextInputProps> = {
+  args: {
+    placeholder: 'type your name',
+  },
+}
+
+export const Disabled: StoryObj<TextInputProps> = {
+  args: {
+    disabled: true,
+  },
+}
